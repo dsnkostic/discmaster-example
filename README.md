@@ -16,6 +16,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * Frontend should be AngularJS and should be as simple as possible
   * Backend should be in the spring boot with the JPA (Hibernate in the back). For interface, use JSON REST API.
   * Use Docker to host postgre database for now.
+* [ ] Integrate CI/CD process
 * [ ] Use [Liquibase](https://www.liquibase.org/) to play with the database migrations
 
 ### Phase Two - Microservice adventure
@@ -62,11 +63,9 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 
 ## Food for thought
 * Should I integrate CI/CD cycle to test deployment on almost prod-like envrironment and which one should I use. This [discussion](https://hackernoon.com/should-i-use-heroku-or-aws-3bfcd4706a36) should be helpful. At the end, this could be the Phase Two of the project.
-* Caching is not considered anywhere, so that alsmo must be integrated somewhere
+* Caching is not considered anywhere, so that also must be integrated somewhere
 
 ## Usefull links:
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [Spring Cloud](https://spring.io/projects/spring-cloud)
 * [Microservices](https://microservices.io/)
-
-
