@@ -1,4 +1,4 @@
-# discmaster-tutorial
+# discmaster-example
 A demo sandbox project where I will try to adapt as much Java technologies as I can
 
 ## Objective
