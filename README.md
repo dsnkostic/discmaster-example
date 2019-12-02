@@ -9,7 +9,7 @@ This will be a `simple` java application that contains the reviews of the video 
 
 Each point should be considered as a separate milestone (and tag in git). Version should be defined as: `Major Version`.`Minor Version`.`Fix version`. Steps will probably be updated as I go forward.
 
-### Phase One
+### Phase One - Monolith begins
 
 * [ ] Create basic video game review platform. 
   * Have a couple of games (10 games), along with the descriptions, pictures, tags, ratings, and recommendations. Just reading of data for now. No updates, inserts and removals. 
@@ -17,6 +17,9 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * Backend should be in the spring boot with the JPA (Hibernate in the back). For interface, use JSON REST API.
   * Use Docker to host postgre database for now.
 * [ ] Use [Liquibase](https://www.liquibase.org/) to play with the database migrations
+
+### Phase Two - Microservice adventure
+
 * [ ] Break thing into three microservices. Document everything with OpenAPI/Swagger. Try to avoid `Distributed monolith antipattern`:
   * One for storing the game reviews
   * One for storing the ratings
@@ -29,15 +32,16 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 * [ ] Use a reverse proxy and API gateway. Evaluate [Zuul](https://github.com/Netflix/eureka). Some [thoughts](https://engineering.opsgenie.com/comparing-api-gateway-performances-nginx-vs-zuul-vs-spring-cloud-gateway-vs-linkerd-b2cc59c65369). Not sure if these should be separated in two points. 
 * [ ] Make redundant microservice nodes and cycle among them (round robin)
 
-### Phase Two
+### Phase Three - Publish Subscribe pattern
 
 * [ ] Implement [Selenium](https://selenium.dev/) for functional testing.
 * [ ] Update the basic application to allow Create, Update and Delete of the game reviews.
 * [ ] Implement pub-sub pattern so that other microservices are notified when something got changed.
 * [ ] Implement [CQRS](https://microservices.io/patterns/data/cqrs.html) pattern.
 
-### Phase Three
+### Phase Four - Security protocols
 
+* [ ] Use Https protocol
 * [ ] Implement Spring security with the OAuth authentification
   * Different microservice will be used to authenticate users
   * Use token based authentification
@@ -46,16 +50,19 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * There should be some work on updating the user management screen.
 * [ ] Add support for the refresh tokens
 
-### Phase Four
+### Phase Five - Childern of the Microservices
 
 * [ ] Implement new microservice for tagging and search. Use [ElasticSearch](https://www.elastic.co/)
 * [ ] Implement Comment system in the new microservice. See how it integrates with the search.
 * [ ] Discuss and think about using a separate microservice to store images.
 * [ ] Migrate image placement to this new microservice.
 
-### Phase Five
+### Phase Six - GraphQL extravaganza 
 * [ ] Explore how to implement [GraphQL](http://graphql.github.io/)
 
+## Food for thought
+* Should I integrate CI/CD cycle to test deployment on almost prod-like envrironment and which one should I use. This [discussion](https://hackernoon.com/should-i-use-heroku-or-aws-3bfcd4706a36) should be helpful. At the end, this could be the Phase Two of the project.
+* Caching is not considered anywhere, so that alsmo must be integrated somewhere
 
 ## Usefull links:
 * [Spring Boot](https://spring.io/projects/spring-boot)
