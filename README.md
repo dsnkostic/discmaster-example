@@ -61,7 +61,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 * [ ] Explore how to implement [GraphQL](http://graphql.github.io/)
 
 ## Food for thought
-* -Should I integrate CI/CD cycle to test deployment on almost prod-like envrironment and which one should I use. This [discussion](https://hackernoon.com/should-i-use-heroku-or-aws-3bfcd4706a36) should be helpful. At the end, this could be the Phase Two of the project.- It would bring unnecessary complexity so I will not do it. I am going to tag the repo, and later, I can simulate countinous deployment at least.
+* ~~Should I integrate CI/CD cycle to test deployment on almost prod-like envrironment and which one should I use. This [discussion](https://hackernoon.com/should-i-use-heroku-or-aws-3bfcd4706a36) should be helpful. At the end, this could be the Phase Two of the project.~~- It would bring unnecessary complexity so I will not do it. I am going to tag the repo, and later, I can simulate countinous deployment at least.
 * Caching is not considered anywhere, so that also must be integrated somewhere
 
 ## Usefull links:
