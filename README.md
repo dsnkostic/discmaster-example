@@ -24,9 +24,9 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * One for storing the game reviews
   * One for storing the ratings
   * One for storing the recommendations
-  * One for AngularJS frontend (Backend for Frontend pattern [BFF](https://samnewman.io/patterns/architectural/bff/)
+  * One for AngularJS frontend (Backend for Frontend pattern [BFF](https://samnewman.io/patterns/architectural/bff/) )
 * [ ] Implement Circuit breakers to defend frontend. Investigate [Hystrix](https://github.com/Netflix/Hystrix)
-* [ ] Use a [nginx reverse proxy] (https://www.nginx.com/resources/wiki/). Not to much as it seems that Zuul offers better performance
+* [ ] Use a [nginx reverse proxy](https://www.nginx.com/resources/wiki/). Not to much as it seems that Zuul offers better performance
 * [ ] Use a service discovery. Evaluate and implement [Eureka](https://github.com/Netflix/eureka)
   * What about [Consul](https://www.consul.io/discovery.html)
 * [ ] Use a reverse proxy and API gateway. Evaluate [Zuul](https://github.com/Netflix/eureka). Some [thoughts](https://engineering.opsgenie.com/comparing-api-gateway-performances-nginx-vs-zuul-vs-spring-cloud-gateway-vs-linkerd-b2cc59c65369). Not sure if these should be separated in two points. 
