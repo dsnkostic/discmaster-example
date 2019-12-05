@@ -36,7 +36,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 
 * [ ] Implement [Selenium](https://selenium.dev/) for functional testing.
 * [ ] Update the basic application to allow Create, Update and Delete of the game reviews.
-* [ ] Implement pub-sub pattern so that other microservices are notified when something got changed.
+* [ ] Implement [pub-sub](https://microservices.io/patterns/communication-style/messaging.html) pattern so that other microservices are notified when something got changed.
 * [ ] Implement [CQRS](https://microservices.io/patterns/data/cqrs.html) pattern.
 
 ### Phase Four - Security protocols
