@@ -31,6 +31,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * What about [Consul](https://www.consul.io/discovery.html)
 * [ ] Use a reverse proxy and API gateway. Evaluate [Zuul](https://github.com/Netflix/eureka). Some [thoughts](https://engineering.opsgenie.com/comparing-api-gateway-performances-nginx-vs-zuul-vs-spring-cloud-gateway-vs-linkerd-b2cc59c65369). Not sure if these should be separated in two points. 
 * [ ] Make redundant microservice nodes and cycle among them (round robin)
+* [ ] Use configuration server. Maybe not at the end, but surely at some point during this phase
 
 ### Phase Three - Publish Subscribe pattern
 
