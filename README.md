@@ -66,6 +66,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 * Caching is not considered anywhere, so that also must be integrated somewhere. (Use [Redis](https://redis.io/) somehow)
 * Pagination of data and possible usage of cursor based pagination. This should be added somewhere at some point
 * Maybe think about the [MongoDB](https://www.mongodb.com/)
+* How about restructuring the whole system using the [Apache Kafka](https://kafka.apache.org/) and the events to describe parts of everything. Is that considerable improvement to the design?
 
 ## Usefull links:
 * [Spring Boot](https://spring.io/projects/spring-boot)
