@@ -11,11 +11,13 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 
 ### Phase One - Monolith begins
 
-* [ ] Create basic video game review platform. 
-  * Have a couple of games (10 games), along with the descriptions, pictures, tags, ratings, and recommendations. Just reading of data for now. No updates, inserts and removals. 
-  * Frontend should be AngularJS and should be as simple as possible
-  * Backend should be in the spring boot with the JPA (Hibernate in the back). For interface, use JSON REST API.
-  * Use Docker to host postgre database for now.
+* [ ] Create basic video game review platform.
+  * [x] Use thymeleaf at the beginning
+  * [ ] Have a couple of games (10 games), along with the descriptions. Just reading of data for now. No updates, inserts and removals.
+  * [ ] Add tags (genre and artistic feel should be here), pictures and recommendations.
+  * [ ] Frontend should be AngularJS and should be as simple as possible
+  * [ ] Backend should be in the spring boot with the JPA (Hibernate in the back). For interface, use JSON REST API.
+  * [ ] Use Docker to host postgre database for now.
 * [ ] Use [Liquibase](https://www.liquibase.org/) to play with the database migrations
 
 ### Phase Two - Microservice adventure

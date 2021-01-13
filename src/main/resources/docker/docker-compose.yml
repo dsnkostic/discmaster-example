@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5600:5432
+    environment:
+      POSTGRES_DB: discmaster
+      POSTGRES_USER: discmaster
+      POSTGRES_PASSWORD: password
