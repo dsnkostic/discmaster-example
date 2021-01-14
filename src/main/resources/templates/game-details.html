@@ -1,0 +1,10 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="${game.title}">Game Title</title>
+  </head>
+  <body>
+    <h1 th:text="${game.title}">Game Title</h1>
+    <h2 th:text="${game.description}">Game Description</h2>
+    <p><a th:href="@{/}">Back to main game list</a></p>
+  </body>
+</html>
