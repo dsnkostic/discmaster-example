@@ -1,9 +1,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Somerhing bad happened</title>
+    <title>Something bad happened</title>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/navbar-top-fixed.css" />
   </head>
   <body>
-    <h2>Status thrown: <span th:text="${status}">status code</span></h2>
-    <h2>Reason message: <span th:text="${reason}">message</span></h2>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Disc Master Web</a>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="bg-light p-5 rounded">
+        <h2>Status thrown: <span th:text="${status}">status code</span></h2>
+        <h2>Reason message: <span th:text="${reason}">message</span></h2>
+        <a class="float-right" th:href="@{/}">Back to main game list</a>
+      </div>
+    </main>
   </body>
 </html>

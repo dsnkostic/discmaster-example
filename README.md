@@ -15,7 +15,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * [x] Use thymeleaf at the beginning
   * [x] Have a couple of games (10 games), along with the descriptions. Just reading of data for now. No updates, inserts and removals.
   * [x] Use Docker to host postgre database for now.
-  * [ ] Add bootstrap css
+  * [x] Add bootstrap css
   * [ ] Test controllers  
   * [ ] Add tags (genre and artistic feel should be here), pictures and recommendations.
   * [ ] Frontend should be AngularJS and should be as simple as possible
@@ -77,3 +77,4 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [Spring Cloud](https://spring.io/projects/spring-cloud)
 * [Microservices](https://microservices.io/)
+* [The Twelve-Factor App Methodology](https://12factor.net/)

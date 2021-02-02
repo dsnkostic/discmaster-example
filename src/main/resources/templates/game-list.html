@@ -1,22 +1,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>List of all available games</title>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/navbar-top-fixed.css" />
   </head>
   <body>
-    <h1>These are all games that you posses:</h1>
-    <table border="1">
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-      <tr th:each="game : ${games}">
-        <td th:text="${game.id}">Game ID</td>
-        <td th:text="${game.title}">Game Title</td>
-        <td th:text="${game.description}">Game Description</td>
-        <td><a th:href="@{/game/{id}(id = ${game.id})}">View game</a></td>
-      </tr>
-    </table>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Disc Master Web</a>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="bg-light p-5 rounded">
+        <h1>These are all games that you posses:</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="game : ${games}">
+              <th scope="row" th:text="${game.id}">Game ID</th>
+              <td th:text="${game.title}">Game Title</td>
+              <td th:text="${game.description}">Game Description</td>
+              <td><a th:href="@{/game/{id}(id = ${game.id})}">View game</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
   </body>
 </html>
