@@ -23,6 +23,15 @@ public class Game {
   // private Set<Tag> tags;
   // private Set<Recommendation> recommendations;
 
+
+  public Game() {
+  }
+
+  public Game(String title, String description) {
+    this.title = title;
+    this.description = description;
+  }
+
   public long getId() {
     return id;
   }
@@ -41,5 +50,14 @@ public class Game {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  @Override
+  public String toString() {
+    return "Game{" +
+        "id=" + id +
+        ", title='" + title + '\'' +
+        ", description='" + description + '\'' +
+        '}';
   }
 }

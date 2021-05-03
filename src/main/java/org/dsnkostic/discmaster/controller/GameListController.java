@@ -1,6 +1,5 @@
 package org.dsnkostic.discmaster.controller;
 
-import org.dsnkostic.discmaster.entity.Game;
 import org.dsnkostic.discmaster.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +27,7 @@ public class GameListController {
 
   @GetMapping("/game/{id}")
   public String getGame(@PathVariable("id") long id, Model model) {
-    Game game = gameRepository.findById(id).orElseThrow(
+    var game = gameRepository.findById(id).orElseThrow(
         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game with " + id + " could not be found"));
     model.addAttribute("game", game);
     return "game-details";

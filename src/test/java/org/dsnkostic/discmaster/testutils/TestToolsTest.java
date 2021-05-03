@@ -16,7 +16,7 @@ import org.testcontainers.shaded.com.google.common.collect.ImmutableList;
 @DisplayName("TestTools Unit Test")
 public class TestToolsTest {
   @Nested
-  @DisplayName("collectionFromModel testing")
+  @DisplayName("collectionFromModel static method testing")
   class collectionFromModelTesting {
 
     private Model model;
