@@ -1,7 +1,13 @@
 package org.dsnkostic.discmaster.controller;
 
-import static org.dsnkostic.discmaster.Constants.GameConstants.*;
-import static org.dsnkostic.discmaster.Constants.ModelConstants.*;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_DESCRIPTION_1;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_DESCRIPTION_2;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_TITLE_1;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_TITLE_2;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_ATTRIBUTE_GAME;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_ATTRIBUTE_GAMES;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_VIEW_NAME_GAME_LIST;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_VITE_NAME_GAME_DETAILS;
 import static org.dsnkostic.discmaster.testutils.CustomMatchers.game;
 import static org.hamcrest.Matchers.contains;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -28,7 +34,7 @@ import org.testcontainers.shaded.com.google.common.collect.ImmutableList;
 
 // As we are testing here only the controller, I consider this the actual replacement for the real unit test
 @WebMvcTest(GameListController.class)
-@DisplayName("GameListController Mock test")
+@DisplayName("GameListController Unit test")
 class GameListControllerTest {
   @Autowired
   private MockMvc mvc;
