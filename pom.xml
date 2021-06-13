@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.1</version>
+    <version>2.5.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>org.dsnkostic</groupId>
   <artifactId>discmaster</artifactId>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
   <name>Discmaster example</name>
   <description>A demo sandbox project where I will try to adapt as much Java technologies as I can</description>
 
@@ -49,7 +49,6 @@
       <version>0.40</version>
     </dependency>
 
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
@@ -59,6 +58,11 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
       <scope>runtime</scope>
     </dependency>
 
@@ -82,7 +86,6 @@
       <artifactId>h2</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <dependencyManagement>
@@ -102,6 +105,27 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
+        <version>${liquibase.version}</version>
+        <configuration>
+          <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+          <migrationSqlOutputFile>generated/main/resources/migrate.sql</migrationSqlOutputFile>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.liquibase.ext</groupId>
+            <artifactId>liquibase-hibernate5</artifactId>
+            <version>${liquibase.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.5.1</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>

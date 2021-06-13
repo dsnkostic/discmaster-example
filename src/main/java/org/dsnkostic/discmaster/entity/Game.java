@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "games")
 public class Game {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private long id;
 
   @Column(nullable = false, name = "title")
@@ -19,10 +19,10 @@ public class Game {
 
   @Column(name = "description")
   private String description;
+
   // private Set<Picture> array
   // private Set<Tag> tags;
   // private Set<Recommendation> recommendations;
-
 
   public Game() {
   }

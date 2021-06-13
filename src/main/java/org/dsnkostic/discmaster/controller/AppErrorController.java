@@ -24,9 +24,4 @@ public class AppErrorController implements ErrorController {
     model.addAttribute("reason", reason.toString());
     return "error";
   }
-
-  @Override
-  public String getErrorPath() {
-    return null;
-  }
 }
