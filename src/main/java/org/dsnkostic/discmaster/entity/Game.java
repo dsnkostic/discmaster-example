@@ -14,6 +14,9 @@ public class Game {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private long id;
 
+  @Column(unique = true, name="short_url", length = 16)
+  private String shortUrl;
+
   @Column(nullable = false, name = "title")
   private String title;
 
@@ -27,13 +30,22 @@ public class Game {
   public Game() {
   }
 
-  public Game(String title, String description) {
+  public Game(String shortUrl, String title, String description) {
+    this.shortUrl = shortUrl;
     this.title = title;
     this.description = description;
   }
 
   public long getId() {
     return id;
+  }
+
+  public String getShortUrl() {
+    return shortUrl;
+  }
+
+  public void setShortUrl(String shortUrl) {
+    this.shortUrl = shortUrl;
   }
 
   public String getTitle() {
@@ -56,6 +68,7 @@ public class Game {
   public String toString() {
     return "Game{" +
         "id=" + id +
+        ", shortUrl='" + shortUrl + '\'' +
         ", title='" + title + '\'' +
         ", description='" + description + '\'' +
         '}';

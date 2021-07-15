@@ -2,6 +2,8 @@ package org.dsnkostic.discmaster.controller;
 
 import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_DESCRIPTION_1;
 import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_DESCRIPTION_2;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_SHORT_URL_1;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_SHORT_URL_2;
 import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_TITLE_1;
 import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_TITLE_2;
 import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_ATTRIBUTE_GAME;
@@ -71,19 +73,11 @@ class GameListControllerTest {
   }
 
   @Nested
-  @DisplayName("When GameRepository is empty")
+  @DisplayName("When GameRepository is populated")
   class whenGameRepositoryPopulated {
-    private final Game game1 = createGame(GAME_TITLE_1, GAME_DESCRIPTION_1);
-    private final Game game2 = createGame(GAME_TITLE_2, GAME_DESCRIPTION_2);
+    private final Game game1 = new Game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1);
+    private final Game game2 = new Game(GAME_SHORT_URL_2,  GAME_TITLE_2, GAME_DESCRIPTION_2);
     private final Collection<Game> games = ImmutableList.of(game1, game2);
-
-    private Game createGame(String title, String description) {
-      Game game = new Game();
-      game.setTitle(title);
-      game.setDescription(description);
-
-      return game;
-    }
 
     @BeforeEach
     void setUp() {
@@ -99,7 +93,8 @@ class GameListControllerTest {
           .andExpect(status().isOk())
           .andExpect(view().name(MODEL_VIEW_NAME_GAME_LIST))
           .andExpect(model().attribute(MODEL_ATTRIBUTE_GAMES,
-              contains(game(GAME_TITLE_1, GAME_DESCRIPTION_1), game(GAME_TITLE_2, GAME_DESCRIPTION_2))));
+              contains(game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1),
+                  game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2))));
     }
 
     @Test
@@ -116,7 +111,7 @@ class GameListControllerTest {
       mvc.perform(get("/game/1"))
           .andExpect(status().isOk())
           .andExpect(view().name(MODEL_VITE_NAME_GAME_DETAILS))
-          .andExpect(model().attribute(MODEL_ATTRIBUTE_GAME, game(GAME_TITLE_1, GAME_DESCRIPTION_1)));
+          .andExpect(model().attribute(MODEL_ATTRIBUTE_GAME, game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1)));
     }
   }
 }

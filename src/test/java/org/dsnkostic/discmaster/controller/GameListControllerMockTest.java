@@ -81,17 +81,9 @@ class GameListControllerMockTest {
   @Nested
   @DisplayName("When GameRepository is empty")
   class whenGameRepositoryPopulated {
-    private final Game game1 = createGame(GAME_TITLE_1, GAME_DESCRIPTION_1);
-    private final Game game2 = createGame(GAME_TITLE_2, GAME_DESCRIPTION_2);
+    private final Game game1 = new Game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1);
+    private final Game game2 = new Game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2);
     private final Collection<Game> games = ImmutableList.of(game1, game2);
-
-    private Game createGame(String title, String description) {
-      Game game = new Game();
-      game.setTitle(title);
-      game.setDescription(description);
-
-      return game;
-    }
 
     @BeforeEach
     void setUp() {
@@ -107,7 +99,8 @@ class GameListControllerMockTest {
 
       assertEquals(MODEL_VIEW_NAME_GAME_LIST, gameListController.index(model));
       assertThat(collectionFromModel(model, MODEL_ATTRIBUTE_GAMES),
-          contains(game(GAME_TITLE_1, GAME_DESCRIPTION_1), game(GAME_TITLE_2, GAME_DESCRIPTION_2)));
+          contains(game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1),
+              game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2)));
     }
 
     @Test
@@ -128,7 +121,7 @@ class GameListControllerMockTest {
       Model model = new ExtendedModelMap();
 
       assertEquals(MODEL_VITE_NAME_GAME_DETAILS, gameListController.getGame(1L, model));
-      assertThat(model.getAttribute(MODEL_ATTRIBUTE_GAME), game(GAME_TITLE_1, GAME_DESCRIPTION_1));
+      assertThat(model.getAttribute(MODEL_ATTRIBUTE_GAME), game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1));
     }
   }
 }

@@ -14,7 +14,15 @@
       </column>
     </createTable>
   </changeSet>
-  <changeSet author="dsnkostic" id="1623185688248-3" context="local-dev">
+  <changeSet author="dsnkostic" id="1626383281554-1">
+    <addColumn tableName="games">
+      <column name="short_url" type="varchar(16)"/>
+    </addColumn>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1626383281554-2">
+    <addUniqueConstraint columnNames="short_url" constraintName="UC_GAMESSHORT_URL_COL" tableName="games"/>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1626383281554-3" context="local-dev">
     <sqlFile path="db/scripts/01-addSampleGameData.sql"/>
     <rollback>
       <sqlFile path="db/scripts/r01-removeAllGameData.sql"/>

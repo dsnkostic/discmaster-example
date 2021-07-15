@@ -40,10 +40,10 @@ class DiscMasterIntegrationTests {
   private MockMvc mvc;
 
   void prefillDatabase() {
-    game1id = entityManager.persist(new Game(GAME_TITLE_1, GAME_DESCRIPTION_1)).getId();
-    game2id = entityManager.persist(new Game(GAME_TITLE_2, GAME_DESCRIPTION_2)).getId();
-    game3id = entityManager.persist(new Game(GAME_TITLE_3, GAME_DESCRIPTION_3)).getId();
-    game4id = entityManager.persist(new Game(GAME_TITLE_4, GAME_DESCRIPTION_4)).getId();
+    game1id = entityManager.persist(new Game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1)).getId();
+    game2id = entityManager.persist(new Game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2)).getId();
+    game3id = entityManager.persist(new Game(GAME_SHORT_URL_3, GAME_TITLE_3, GAME_DESCRIPTION_3)).getId();
+    game4id = entityManager.persist(new Game(GAME_SHORT_URL_4, GAME_TITLE_4, GAME_DESCRIPTION_4)).getId();
   }
 
   @Nested
@@ -68,10 +68,10 @@ class DiscMasterIntegrationTests {
           .andExpect(status().isOk())
           .andExpect(view().name(MODEL_VIEW_NAME_GAME_LIST))
           .andExpect(model().attribute(MODEL_ATTRIBUTE_GAMES, contains(
-              game(game1id, GAME_TITLE_1, GAME_DESCRIPTION_1),
-              game(game2id, GAME_TITLE_2, GAME_DESCRIPTION_2),
-              game(game3id, GAME_TITLE_3, GAME_DESCRIPTION_3),
-              game(game4id, GAME_TITLE_4, GAME_DESCRIPTION_4))));
+              game(game1id, GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1),
+              game(game2id, GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2),
+              game(game3id, GAME_SHORT_URL_3, GAME_TITLE_3, GAME_DESCRIPTION_3),
+              game(game4id, GAME_SHORT_URL_4, GAME_TITLE_4, GAME_DESCRIPTION_4))));
     }
   }
 
@@ -94,7 +94,7 @@ class DiscMasterIntegrationTests {
       mvc.perform(get("/game/" + game2id))
           .andExpect(status().isOk())
           .andExpect(view().name(MODEL_VITE_NAME_GAME_DETAILS))
-          .andExpect(model().attribute(MODEL_ATTRIBUTE_GAME, game(GAME_TITLE_2, GAME_DESCRIPTION_2)));
+          .andExpect(model().attribute(MODEL_ATTRIBUTE_GAME, game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2)));
     }
   }
 }

@@ -56,10 +56,10 @@ class GameRepositoryTest {
 
     @BeforeEach
     void setUp() {
-      game1id = entityManager.persist(new Game(GAME_TITLE_1, GAME_DESCRIPTION_1)).getId();
-      game2id = entityManager.persist(new Game(GAME_TITLE_2, GAME_DESCRIPTION_2)).getId();
-      game3id = entityManager.persist(new Game(GAME_TITLE_3, GAME_DESCRIPTION_3)).getId();
-      game4id = entityManager.persist(new Game(GAME_TITLE_4, GAME_DESCRIPTION_4)).getId();
+      game1id = entityManager.persist(new Game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1)).getId();
+      game2id = entityManager.persist(new Game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2)).getId();
+      game3id = entityManager.persist(new Game(GAME_SHORT_URL_3, GAME_TITLE_3, GAME_DESCRIPTION_3)).getId();
+      game4id = entityManager.persist(new Game(GAME_SHORT_URL_4, GAME_TITLE_4, GAME_DESCRIPTION_4)).getId();
     }
 
     @Test
@@ -68,10 +68,10 @@ class GameRepositoryTest {
       List<Game> games = Lists.newArrayList(gameRepository.findAll());
 
       assertThat(games, contains(
-          game(game1id, GAME_TITLE_1, GAME_DESCRIPTION_1),
-          game(game2id, GAME_TITLE_2, GAME_DESCRIPTION_2),
-          game(game3id, GAME_TITLE_3, GAME_DESCRIPTION_3),
-          game(game4id, GAME_TITLE_4, GAME_DESCRIPTION_4)));
+          game(game1id, GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1),
+          game(game2id, GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2),
+          game(game3id, GAME_SHORT_URL_3, GAME_TITLE_3, GAME_DESCRIPTION_3),
+          game(game4id, GAME_SHORT_URL_4, GAME_TITLE_4, GAME_DESCRIPTION_4)));
     }
 
     @Test
@@ -80,7 +80,7 @@ class GameRepositoryTest {
       Optional<Game> game = gameRepository.findById(1L);
 
       assertTrue(game.isPresent());
-      assertThat(game.get(), game(game1id, GAME_TITLE_1, GAME_DESCRIPTION_1));
+      assertThat(game.get(), game(game1id, GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1));
     }
 
     @Test

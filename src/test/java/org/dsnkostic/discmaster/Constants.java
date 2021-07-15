@@ -3,6 +3,10 @@ package org.dsnkostic.discmaster;
 public interface Constants {
 
   interface GameConstants {
+    String GAME_SHORT_URL_1 = "ace";
+    String GAME_SHORT_URL_2 = "ktime";
+    String GAME_SHORT_URL_3 = "swarrior";
+    String GAME_SHORT_URL_4 = "___";
     String GAME_TITLE_1 = "Alpha Centauri";
     String GAME_TITLE_2 = "Killing Time";
     String GAME_TITLE_3 = "Shadow Warrior";

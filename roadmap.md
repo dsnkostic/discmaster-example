@@ -18,7 +18,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * [x] Add bootstrap css
   * [x] Test controllers
   * [x] Use [Liquibase](https://www.liquibase.org/) to play with the database migrations
-  * [ ] Change sequence generator to the custom one.  
+  * [ ] Switch UUID generation and add unique short name that is used as url path.  
   * [ ] Add tags (genre and artistic feel should be here), pictures and recommendations.
   * [ ] Frontend should be AngularJS and should be as simple as possible
   * [ ] Use test containers for testing  
