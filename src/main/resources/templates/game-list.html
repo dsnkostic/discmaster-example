@@ -19,6 +19,7 @@
           <thead>
             <tr>
               <th scope="col">ID</th>
+              <th scope="col">Short URL</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">Actions</th>
@@ -27,9 +28,10 @@
           <tbody>
             <tr th:each="game : ${games}">
               <th scope="row" th:text="${game.id}">Game ID</th>
+              <td th:text="${game.shortUrl}">Game Short Url</td>
               <td th:text="${game.title}">Game Title</td>
               <td th:text="${game.description}">Game Description</td>
-              <td><a th:href="@{/game/{id}(id = ${game.id})}">View game</a></td>
+              <td><a th:href="@{/game/{shortUrl}(shortUrl = ${game.shortUrl})}">View game</a></td>
             </tr>
           </tbody>
         </table>

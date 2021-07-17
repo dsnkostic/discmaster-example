@@ -34,16 +34,22 @@ class GameRepositoryTest {
   class whenEmptyGameList {
 
     @Test
-    @DisplayName("Should return 0 games")
-    void findNoneGames() {
+    @DisplayName("Find All should return 0 games")
+    void findGamesByIdShouldReturnNone() {
       List<Game> games = Lists.newArrayList(gameRepository.findAll());
       assertEquals(0, games.size());
     }
 
     @Test
-    @DisplayName("Should not find any game")
-    void findNoneGame() {
+    @DisplayName("Find By ID should not find any game")
+    void findGameByIdShouldReturnNone() {
       assertTrue(gameRepository.findById(1L).isEmpty());
+    }
+
+    @Test
+    @DisplayName("Find By Short Url should noy find any game")
+    void findGameByShortUrlShouldReturnNone() {
+      assertTrue(gameRepository.findOptionalByShortUrl("something").isEmpty());
     }
   }
   @Nested
@@ -63,8 +69,8 @@ class GameRepositoryTest {
     }
 
     @Test
-    @DisplayName("Should return all games")
-    void findAllGames() {
+    @DisplayName("Find all should return all games")
+    void findGamesByIdShouldReturnAllGames() {
       List<Game> games = Lists.newArrayList(gameRepository.findAll());
 
       assertThat(games, contains(
@@ -75,8 +81,8 @@ class GameRepositoryTest {
     }
 
     @Test
-    @DisplayName("Should find one game")
-    void findOneGame() {
+    @DisplayName("Find By Id With existing id should find one game")
+    void findGameByIdShouldReturnOneGame() {
       Optional<Game> game = gameRepository.findById(1L);
 
       assertTrue(game.isPresent());
@@ -84,11 +90,25 @@ class GameRepositoryTest {
     }
 
     @Test
-    @DisplayName("Should not find any game")
-    void findNoneGame() {
+    @DisplayName("Find by Id Without existing id should not find any game")
+    void findGameByIdShouldReturnNone() {
       assertTrue(gameRepository.findById(1000L).isEmpty());
     }
 
+    @Test
+    @DisplayName("Find By Short Url With existing short url should find one game")
+    void findGameByShortUrlShouldReturnOneGame() {
+      Optional<Game> game = gameRepository.findOptionalByShortUrl(GAME_SHORT_URL_2);
+
+      assertTrue(game.isPresent());
+      assertThat(game.get(), game(game2id, GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2));
+    }
+
+    @Test
+    @DisplayName("Find By Short Url Without existing short url should return none")
+    void findGameByShortUrlShouldReturnNone() {
+      assertTrue(gameRepository.findOptionalByShortUrl("asdasd").isEmpty());
+    }
   }
 
 }

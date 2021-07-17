@@ -1,7 +1,15 @@
 package org.dsnkostic.discmaster.controller;
 
-import static org.dsnkostic.discmaster.Constants.GameConstants.*;
-import static org.dsnkostic.discmaster.Constants.ModelConstants.*;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_DESCRIPTION_1;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_DESCRIPTION_2;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_SHORT_URL_1;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_SHORT_URL_2;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_TITLE_1;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_TITLE_2;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_ATTRIBUTE_GAME;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_ATTRIBUTE_GAMES;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_VIEW_NAME_GAME_LIST;
+import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_VITE_NAME_GAME_DETAILS;
 import static org.dsnkostic.discmaster.testutils.CustomMatchers.game;
 import static org.dsnkostic.discmaster.testutils.TestTools.collectionFromModel;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -9,7 +17,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
 
 import java.util.ArrayList;
@@ -51,7 +59,7 @@ class GameListControllerMockTest {
     @BeforeEach
     void setUp() {
       doReturn(new ArrayList<>()).when(gameRepository).findAll();
-      doReturn(Optional.empty()).when(gameRepository).findById(anyLong());
+      doReturn(Optional.empty()).when(gameRepository).findOptionalByShortUrl(anyString());
     }
 
     @Test
@@ -71,10 +79,10 @@ class GameListControllerMockTest {
       Model model = new ExtendedModelMap();
 
       ResponseStatusException exception = assertThrows(ResponseStatusException.class,
-          () -> gameListController.getGame(20, model));
+          () -> gameListController.getGame("some", model));
 
       assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
-      assertEquals("Game with 20 could not be found", exception.getReason());
+      assertEquals("Game some could not be found", exception.getReason());
     }
   }
 
@@ -88,8 +96,8 @@ class GameListControllerMockTest {
     @BeforeEach
     void setUp() {
       doReturn(games).when(gameRepository).findAll();
-      doReturn(Optional.of(game1)).when(gameRepository).findById(1L);
-      doReturn(Optional.of(game2)).when(gameRepository).findById(2L);
+      doReturn(Optional.of(game1)).when(gameRepository).findOptionalByShortUrl(GAME_SHORT_URL_1);
+      doReturn(Optional.of(game2)).when(gameRepository).findOptionalByShortUrl(GAME_SHORT_URL_2);
     }
 
     @Test
@@ -109,10 +117,10 @@ class GameListControllerMockTest {
       Model model = new ExtendedModelMap();
 
       ResponseStatusException exception = assertThrows(ResponseStatusException.class,
-          () -> gameListController.getGame(20, model));
+          () -> gameListController.getGame("some", model));
 
       assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
-      assertEquals("Game with 20 could not be found", exception.getReason());
+      assertEquals("Game some could not be found", exception.getReason());
     }
 
     @Test
@@ -120,7 +128,7 @@ class GameListControllerMockTest {
     void gameFound() {
       Model model = new ExtendedModelMap();
 
-      assertEquals(MODEL_VITE_NAME_GAME_DETAILS, gameListController.getGame(1L, model));
+      assertEquals(MODEL_VITE_NAME_GAME_DETAILS, gameListController.getGame(GAME_SHORT_URL_1, model));
       assertThat(model.getAttribute(MODEL_ATTRIBUTE_GAME), game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1));
     }
   }

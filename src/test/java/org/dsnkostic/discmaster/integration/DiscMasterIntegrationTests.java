@@ -81,9 +81,9 @@ class DiscMasterIntegrationTests {
     @Test
     @DisplayName("Show error page for non existing game")
     void gameNotFound() throws Exception {
-      mvc.perform(get("/game/2"))
+      mvc.perform(get("/game/some"))
           .andExpect(status().isNotFound())
-          .andExpect(status().reason("Game with 2 could not be found"));
+          .andExpect(status().reason("Game some could not be found"));
     }
 
     @Test
@@ -91,7 +91,7 @@ class DiscMasterIntegrationTests {
     void gameFound() throws Exception {
       prefillDatabase();
 
-      mvc.perform(get("/game/" + game2id))
+      mvc.perform(get("/game/" + GAME_SHORT_URL_2))
           .andExpect(status().isOk())
           .andExpect(view().name(MODEL_VITE_NAME_GAME_DETAILS))
           .andExpect(model().attribute(MODEL_ATTRIBUTE_GAME, game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2)));

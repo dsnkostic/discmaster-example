@@ -25,10 +25,10 @@ public class GameListController {
     return "game-list";
   }
 
-  @GetMapping("/game/{id}")
-  public String getGame(@PathVariable("id") long id, Model model) {
-    var game = gameRepository.findById(id).orElseThrow(
-        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game with " + id + " could not be found"));
+  @GetMapping("/game/{shortUrl}")
+  public String getGame(@PathVariable("shortUrl") String shortUrl, Model model) {
+    var game = gameRepository.findOptionalByShortUrl(shortUrl).orElseThrow(
+        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game " + shortUrl + " could not be found"));
     model.addAttribute("game", game);
     return "game-details";
   }

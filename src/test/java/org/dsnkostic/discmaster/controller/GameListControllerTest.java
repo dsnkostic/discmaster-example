@@ -12,7 +12,7 @@ import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_VIEW_NAME_
 import static org.dsnkostic.discmaster.Constants.ModelConstants.MODEL_VITE_NAME_GAME_DETAILS;
 import static org.dsnkostic.discmaster.testutils.CustomMatchers.game;
 import static org.hamcrest.Matchers.contains;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -51,7 +51,7 @@ class GameListControllerTest {
     @BeforeEach
     void setUp() {
       doReturn(new ArrayList<>()).when(gameRepository).findAll();
-      doReturn(Optional.empty()).when(gameRepository).findById(anyLong());
+      doReturn(Optional.empty()).when(gameRepository).findOptionalByShortUrl(anyString());
     }
 
     @Test
@@ -66,9 +66,9 @@ class GameListControllerTest {
     @Test
     @DisplayName("Show error page for non existing game")
     void gameNotFound() throws Exception {
-      mvc.perform(get("/game/20"))
+      mvc.perform(get("/game/some"))
           .andExpect(status().isNotFound())
-          .andExpect(status().reason("Game with 20 could not be found"));
+          .andExpect(status().reason("Game some could not be found"));
     }
   }
 
@@ -82,8 +82,8 @@ class GameListControllerTest {
     @BeforeEach
     void setUp() {
       doReturn(games).when(gameRepository).findAll();
-      doReturn(Optional.of(game1)).when(gameRepository).findById(1L);
-      doReturn(Optional.of(game2)).when(gameRepository).findById(2L);
+      doReturn(Optional.of(game1)).when(gameRepository).findOptionalByShortUrl(GAME_SHORT_URL_1);
+      doReturn(Optional.of(game2)).when(gameRepository).findOptionalByShortUrl(GAME_SHORT_URL_2);
     }
 
     @Test
@@ -100,15 +100,15 @@ class GameListControllerTest {
     @Test
     @DisplayName("Show error page for non existing game")
     void gameNotFound() throws Exception {
-      mvc.perform(get("/game/20"))
+      mvc.perform(get("/game/some"))
           .andExpect(status().isNotFound())
-          .andExpect(status().reason("Game with 20 could not be found"));
+          .andExpect(status().reason("Game some could not be found"));
     }
 
     @Test
     @DisplayName("Show game details page for existing game")
     void gameFound() throws Exception {
-      mvc.perform(get("/game/1"))
+      mvc.perform(get("/game/" + GAME_SHORT_URL_1))
           .andExpect(status().isOk())
           .andExpect(view().name(MODEL_VITE_NAME_GAME_DETAILS))
           .andExpect(model().attribute(MODEL_ATTRIBUTE_GAME, game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1)));
