@@ -22,7 +22,29 @@
   <changeSet author="dsnkostic" id="1626383281554-2">
     <addUniqueConstraint columnNames="short_url" constraintName="UC_GAMESSHORT_URL_COL" tableName="games"/>
   </changeSet>
-  <changeSet author="dsnkostic" id="1626383281554-3" context="local-dev">
+  <changeSet author="dsnkostic" id="1626975110662-1">
+    <addColumn tableName="games">
+      <column name="uuid" type="uuid">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1626975110662-2">
+    <dropColumn columnName="id" tableName="games"/>
+    <dropSequence sequenceName="hibernate_sequence"/>
+    <rollback>
+      <createSequence incrementBy="1" sequenceName="hibernate_sequence" startValue="1"/>
+      <addColumn tableName="games">
+        <column name="id" type="BIGINT">
+          <constraints nullable="false" primaryKey="true" primaryKeyName="gamesPK"/>
+        </column>
+      </addColumn>
+    </rollback>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1626975110662-3">
+    <addPrimaryKey columnNames="uuid" constraintName="gamesPK" tableName="games"/>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1626975110662-4" context="local-dev">
     <sqlFile path="db/scripts/01-addSampleGameData.sql"/>
     <rollback>
       <sqlFile path="db/scripts/r01-removeAllGameData.sql"/>

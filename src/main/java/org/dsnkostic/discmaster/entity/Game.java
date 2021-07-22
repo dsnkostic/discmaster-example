@@ -1,9 +1,9 @@
 package org.dsnkostic.discmaster.entity;
 
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,8 +11,8 @@ import javax.persistence.Table;
 @Table(name = "games")
 public class Game {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private long id;
+  @GeneratedValue
+  private UUID uuid;
 
   @Column(unique = true, name="short_url", length = 16)
   private String shortUrl;
@@ -36,8 +36,8 @@ public class Game {
     this.description = description;
   }
 
-  public long getId() {
-    return id;
+  public UUID getUuid() {
+    return uuid;
   }
 
   public String getShortUrl() {
@@ -67,7 +67,7 @@ public class Game {
   @Override
   public String toString() {
     return "Game{" +
-        "id=" + id +
+        "id=" + uuid +
         ", shortUrl='" + shortUrl + '\'' +
         ", title='" + title + '\'' +
         ", description='" + description + '\'' +

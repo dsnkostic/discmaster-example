@@ -18,7 +18,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">UUID</th>
               <th scope="col">Short URL</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
@@ -27,7 +27,7 @@
           </thead>
           <tbody>
             <tr th:each="game : ${games}">
-              <th scope="row" th:text="${game.id}">Game ID</th>
+              <th scope="row" th:text="${game.uuid}">Game ID</th>
               <td th:text="${game.shortUrl}">Game Short Url</td>
               <td th:text="${game.title}">Game Title</td>
               <td th:text="${game.description}">Game Description</td>
