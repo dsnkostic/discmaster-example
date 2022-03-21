@@ -21,7 +21,7 @@ public class CustomMatchers {
   static public <E> Matcher<? super E> game(UUID expectedId, String expectedShortUrl,
       String expectedTitle, String expectedDescription) {
     return allOf(
-        hasProperty("id", equalTo(expectedId)),
+        hasProperty("uuid", equalTo(expectedId)),
         hasProperty("shortUrl", equalTo(expectedShortUrl)),
         hasProperty("title", equalTo(expectedTitle)),
         hasProperty("description", equalTo(expectedDescription)));

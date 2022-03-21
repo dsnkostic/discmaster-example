@@ -1,10 +1,15 @@
 package org.dsnkostic.discmaster.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,11 +28,13 @@ public class Game {
   @Column(name = "description")
   private String description;
 
+  @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+  private final List<GameTag> gameTags = new ArrayList<>();
+
   // private Set<Picture> array
-  // private Set<Tag> tags;
   // private Set<Recommendation> recommendations;
 
-  public Game() {
+  protected Game() {
   }
 
   public Game(String shortUrl, String title, String description) {
@@ -64,10 +71,14 @@ public class Game {
     this.description = description;
   }
 
+  public List<GameTag> getGameTags() {
+    return gameTags;
+  }
+
   @Override
   public String toString() {
     return "Game{" +
-        "id=" + uuid +
+        "uuid=" + uuid +
         ", shortUrl='" + shortUrl + '\'' +
         ", title='" + title + '\'' +
         ", description='" + description + '\'' +

@@ -18,4 +18,4 @@ Inside src/main/resources/docker/docker-compose.yml, there is a composer file th
 ### Liquibase database evolution
 
 Make sure you run this command to evolve schema based on JPA entity models `mvn liquibase:diff`. Result changelog you will find in the `generated/main/resources/changelog-diff.xml` file. Inspect the file and copy needed changeset to the `src/main/java/resource/changelog/changelog-master.xml`. Be aware that there is almost always generated alterSequence changeSet with `hibernate_sequence`. You can ignore this one. 
-
+Test data is in the local-dev context, so make sure to add that. By default, liquibase will include all contexts.

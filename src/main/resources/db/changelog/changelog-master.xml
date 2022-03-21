@@ -50,4 +50,23 @@
       <sqlFile path="db/scripts/r01-removeAllGameData.sql"/>
     </rollback>
   </changeSet>
+  <changeSet author="dsnkostic" id="1647896821881-1">
+    <createTable tableName="game_tags">
+      <column name="uuid" type="UUID">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="game_tagsPK"/>
+      </column>
+      <column name="key" type="VARCHAR(255)"/>
+      <column name="value" type="VARCHAR(255)"/>
+      <column name="game_id" type="UUID"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1647896821881-2">
+    <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="game_tags" constraintName="FK2ouhy80wfy0vcnq2hn20wfymy" deferrable="false" initiallyDeferred="false" referencedColumnNames="uuid" referencedTableName="games" validate="true"/>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1647896821881-3" context="local-dev">
+    <sqlFile path="db/scripts/02-addSampleGameTagData.sql"/>
+    <rollback>
+      <sqlFile path="db/scripts/r02-removeAllGameTagData.sql"/>
+    </rollback>
+  </changeSet>
 </databaseChangeLog>

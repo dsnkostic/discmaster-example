@@ -20,7 +20,10 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * [x] Use [Liquibase](https://www.liquibase.org/) to play with the database migrations
   * [x] Switch UUID generation and add unique short name that is used as url path.  
   * [ ] Add tags (genre and artistic feel should be here), pictures and recommendations.
-  * [ ] Frontend should be AngularJS and should be as simple as possible
+    * [ ] Tags are used as arbitrary information about the games. It consists of key/value pairs, which can be repeatable.
+    * [ ] Images should be stored on the service, but in db, it should contain only data and location
+    * [ ] Recommendations should contain title, text, from which user and date of creation
+  * [ ] Frontend should be VueJS and should be as simple as possible
   * [ ] Use test containers for testing  
   * [ ] Backend should be in the spring boot with the JPA (Hibernate in the back). For the interface, use JSON REST API.
 
@@ -77,6 +80,8 @@ Each point should be considered as a separate milestone (and tag in git). Versio
 * Should I add Automatic testing, from end user perspective like [Selenium](https://www.selenium.dev/)
 * What about translations?
 * How about switching to Gradle?
+* Think about using the Graph databases for the recommendation system
+* How about using [gherkin and cucumber](https://cucumber.io/docs/gherkin/) for testing
 
 ## Usefull links:
 * [Spring Boot](https://spring.io/projects/spring-boot)
