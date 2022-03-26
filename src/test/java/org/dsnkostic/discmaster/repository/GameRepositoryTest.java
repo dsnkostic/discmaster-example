@@ -1,7 +1,6 @@
 package org.dsnkostic.discmaster.repository;
 
-import static org.dsnkostic.discmaster.Constants.GameConstants.*;
-import static org.dsnkostic.discmaster.testutils.CustomMatchers.game;
+import static org.dsnkostic.discmaster.Constants.GameConstants.GAME_SHORT_URL_2;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,6 +11,8 @@ import java.util.Optional;
 import java.util.UUID;
 import org.assertj.core.util.Lists;
 import org.dsnkostic.discmaster.entity.Game;
+import org.dsnkostic.discmaster.testutils.dbutils.BasicDBDataSet;
+import org.dsnkostic.discmaster.testutils.dbutils.DBDataSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -56,17 +57,11 @@ class GameRepositoryTest {
   @Nested
   @DisplayName("When GameRepository populated")
   class whenGameListPopulated {
-    private UUID game1id;
-    private UUID game2id;
-    private UUID game3id;
-    private UUID game4id;
+    private DBDataSet dbDataSet;
 
     @BeforeEach
     void setUp() {
-      game1id = entityManager.persist(new Game(GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1)).getUuid();
-      game2id = entityManager.persist(new Game(GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2)).getUuid();
-      game3id = entityManager.persist(new Game(GAME_SHORT_URL_3, GAME_TITLE_3, GAME_DESCRIPTION_3)).getUuid();
-      game4id = entityManager.persist(new Game(GAME_SHORT_URL_4, GAME_TITLE_4, GAME_DESCRIPTION_4)).getUuid();
+      dbDataSet = new BasicDBDataSet(entityManager);
     }
 
     @Test
@@ -75,19 +70,19 @@ class GameRepositoryTest {
       List<Game> games = Lists.newArrayList(gameRepository.findAll());
 
       assertThat(games, contains(
-          game(game1id, GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1),
-          game(game2id, GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2),
-          game(game3id, GAME_SHORT_URL_3, GAME_TITLE_3, GAME_DESCRIPTION_3),
-          game(game4id, GAME_SHORT_URL_4, GAME_TITLE_4, GAME_DESCRIPTION_4)));
+          dbDataSet.getGameMatchers().get(0),
+          dbDataSet.getGameMatchers().get(1),
+          dbDataSet.getGameMatchers().get(2),
+          dbDataSet.getGameMatchers().get(3)));
     }
 
     @Test
     @DisplayName("Find By Id With existing id should find one game")
     void findGameByIdShouldReturnOneGame() {
-      Optional<Game> game = gameRepository.findById(game1id);
+      Optional<Game> game = gameRepository.findById(dbDataSet.getGameUUIDS().get(0));
 
       assertTrue(game.isPresent());
-      assertThat(game.get(), game(game1id, GAME_SHORT_URL_1, GAME_TITLE_1, GAME_DESCRIPTION_1));
+      assertThat(game.get(), dbDataSet.getGameMatchers().get(0));
     }
 
     @Test
@@ -102,7 +97,7 @@ class GameRepositoryTest {
       Optional<Game> game = gameRepository.findOptionalByShortUrl(GAME_SHORT_URL_2);
 
       assertTrue(game.isPresent());
-      assertThat(game.get(), game(game2id, GAME_SHORT_URL_2, GAME_TITLE_2, GAME_DESCRIPTION_2));
+      assertThat(game.get(), dbDataSet.getGameMatchers().get(1));
     }
 
     @Test

@@ -34,7 +34,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.shaded.com.google.common.collect.ImmutableList;
 
-// As we are testing here only the controller, I consider this the actual replacement for the real unit test
+// As we are testing here only the controller, I consider
+// this the actual replacement for the real unit test
 @WebMvcTest(GameListController.class)
 @DisplayName("GameListController Unit test")
 class GameListControllerTest {

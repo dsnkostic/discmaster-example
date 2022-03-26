@@ -84,4 +84,25 @@ public class Game {
         ", description='" + description + '\'' +
         '}';
   }
+
+  public static class GameBuilder {
+    private final Game game;
+
+    public GameBuilder(String shortUrl, String title, String description) {
+      this.game = new Game(shortUrl, title, description);
+    }
+
+    public GameBuilder withGameTag(String key, String value) {
+      this.game.getGameTags().add(new GameTag(this.game, key, value));
+      return this;
+    }
+
+    public Game build() {
+      return this.game;
+    }
+
+    public static GameBuilder gameBuilder(String shortUrl, String title, String description) {
+      return new GameBuilder(shortUrl, title, description);
+    }
+  }
 }
