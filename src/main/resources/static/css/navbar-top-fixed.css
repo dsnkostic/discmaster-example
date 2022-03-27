@@ -2,3 +2,23 @@ body {
   min-height: 75rem;
   padding-top: 4.5rem;
 }
+
+.text-yellow {
+  color: #ffee07 !important;
+}
+
+.text-black {
+  color: #0f0f0f !important;
+}
+
+.bg-blue {
+  background-color: #007bff !important;
+}
+
+.bg-green {
+  background-color: #28a745 !important;
+}
+
+.bg-red {
+  background-color: #dc3545 !important;
+}

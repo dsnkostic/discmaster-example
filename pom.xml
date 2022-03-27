@@ -10,7 +10,7 @@
   </parent>
   <groupId>org.dsnkostic</groupId>
   <artifactId>discmaster</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
   <name>Discmaster example</name>
   <description>A demo sandbox project where I will try to adapt as much Java technologies as I can</description>
 
