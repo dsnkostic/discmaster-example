@@ -19,6 +19,7 @@
           <thead>
             <tr>
               <th scope="col">UUID</th>
+              <th scope="col">Thumbnail</th>
               <th scope="col">Short URL</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
@@ -27,7 +28,12 @@
           </thead>
           <tbody>
             <tr th:each="game : ${games}">
-              <th scope="row" th:text="${game.uuid}">Game ID</th>
+              <td th:text="${game.uuid}">Game ID</td>
+              <td>
+                <div style="height: 60px">
+                  <img src="/ph/thumbnail_ph_1.png" class="d-block h-100 mx-auto" />
+                </div>
+              </td>
               <td th:text="${game.shortUrl}">Game Short Url</td>
               <td th:text="${game.title}">Game Title</td>
               <td th:text="${game.description}">Game Description</td>
