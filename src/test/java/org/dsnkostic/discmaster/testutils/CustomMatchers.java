@@ -18,28 +18,27 @@ public class CustomMatchers {
         hasProperty("description", equalTo(expectedDescription)));
   }
 
-  static public <E> Matcher<E> game(UUID expectedId, String expectedShortUrl,
-      String expectedTitle, String expectedDescription) {
-    return allOf(
-        hasProperty("uuid", equalTo(expectedId)),
-        hasProperty("shortUrl", equalTo(expectedShortUrl)),
-        hasProperty("title", equalTo(expectedTitle)),
-        hasProperty("description", equalTo(expectedDescription)));
-  }
-
   static public <E> Matcher<E> gameTag(String expectedKey, String expectedValue) {
     return allOf(
         hasProperty("key", equalTo(expectedKey)),
         hasProperty("value", equalTo(expectedValue)));
   }
 
-  static public <E> Matcher<E> game(UUID expectedId, String expectedShortUrl,
-      String expectedTitle, String expectedDescription, Matcher<?> gameTags) {
+  static public <E> Matcher<E> imageBase(String expectedFilename) {
+    return allOf(
+        hasProperty("filename", equalTo(expectedFilename)));
+  }
+
+  static public <E> Matcher<E> game(UUID expectedId, String expectedShortUrl, String expectedTitle,
+      String expectedDescription, Matcher<?> gameTags, Matcher<?> thumbnail, Matcher<?> screenshots) {
     return allOf(
         hasProperty("uuid", equalTo(expectedId)),
         hasProperty("shortUrl", equalTo(expectedShortUrl)),
         hasProperty("title", equalTo(expectedTitle)),
         hasProperty("description", equalTo(expectedDescription)),
-        hasProperty("gameTags", gameTags));
+        hasProperty("gameTags", gameTags),
+        hasProperty("thumbnail", thumbnail),
+        hasProperty("screenshots", screenshots)
+    );
   }
 }

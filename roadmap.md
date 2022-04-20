@@ -21,7 +21,7 @@ Each point should be considered as a separate milestone (and tag in git). Versio
   * [x] Switch UUID generation and add unique short name that is used as url path.  
   * [ ] Add tags (genre and artistic feel should be here), pictures and recommendations.
     * [x] Tags are used as arbitrary information about the games. It consists of key/value pairs, which can be repeatable.
-    * [ ] Images should be stored on the service, (should it be in db?), it should contain only data and location
+    * [x] Images should be stored on the service, (should it be in db?), it should contain only data and location
     * [ ] Recommendations should contain title, text, from which user and date of creation
   * [ ] Frontend should be VueJS and should be as simple as possible
   * [ ] Use test containers for testing  

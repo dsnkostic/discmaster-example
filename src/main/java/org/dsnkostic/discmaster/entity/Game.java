@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -31,7 +33,13 @@ public class Game {
   @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
   private final List<GameTag> gameTags = new ArrayList<>();
 
-  // private Set<Picture> array
+  @OneToOne(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+  private Thumbnail thumbnail;
+
+  @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+  @OrderColumn(name = "ordering")
+  private final List<Screenshot> screenshots = new ArrayList<>();
+
   // private Set<Recommendation> recommendations;
 
   protected Game() {
@@ -75,6 +83,18 @@ public class Game {
     return gameTags;
   }
 
+  public Thumbnail getThumbnail() {
+    return thumbnail;
+  }
+
+  public void setThumbnail(Thumbnail thumbnail) {
+    this.thumbnail = thumbnail;
+  }
+
+  public List<Screenshot> getScreenshots() {
+    return screenshots;
+  }
+
   @Override
   public String toString() {
     return "Game{" +
@@ -94,6 +114,16 @@ public class Game {
 
     public GameBuilder withGameTag(String key, String value) {
       this.game.getGameTags().add(new GameTag(this.game, key, value));
+      return this;
+    }
+
+    public GameBuilder withThumbnail(String filename) {
+      this.game.setThumbnail(new Thumbnail(this.game, filename));
+      return this;
+    }
+
+    public GameBuilder withScreenshot(String filename) {
+      this.game.getScreenshots().add(new Screenshot(this.game, filename));
       return this;
     }
 

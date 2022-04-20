@@ -69,4 +69,39 @@
       <sqlFile path="db/scripts/r02-removeAllGameTagData.sql"/>
     </rollback>
   </changeSet>
+  <changeSet author="dsnkostic" id="1650482115255-1">
+    <createTable tableName="screenshot">
+      <column name="uuid" type="UUID">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="screenshotPK"/>
+      </column>
+      <column name="filename" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="game_id" type="UUID"/>
+      <column name="ordering" type="INTEGER"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1650482115255-2">
+    <createTable tableName="thumbnail">
+      <column name="uuid" type="UUID">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="thumbnailPK"/>
+      </column>
+      <column name="filename" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="game_id" type="UUID"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1650482115255-3">
+    <addUniqueConstraint columnNames="filename" constraintName="UC_SCREENSHOTFILENAME_COL" tableName="screenshot"/>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1650482115255-4">
+    <addUniqueConstraint columnNames="filename" constraintName="UC_THUMBNAILFILENAME_COL" tableName="thumbnail"/>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1650482115255-5">
+    <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="screenshot" constraintName="FK9ke6nuatvj7ty3l43r896adp9" deferrable="false" initiallyDeferred="false" referencedColumnNames="uuid" referencedTableName="games" validate="true"/>
+  </changeSet>
+  <changeSet author="dsnkostic" id="1650482115255-6">
+    <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="thumbnail" constraintName="FKmfxdsrmoq8qbo94l81hmlyu7v" deferrable="false" initiallyDeferred="false" referencedColumnNames="uuid" referencedTableName="games" validate="true"/>
+  </changeSet>
 </databaseChangeLog>

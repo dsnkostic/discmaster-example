@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.1
+* Added game tags features
+* Refactor testing data
+
 ## 0.1.1
 * Changed primary key type to UUID
 * Added short_url feature, instead of typing integer id in the URL

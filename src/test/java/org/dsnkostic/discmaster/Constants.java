@@ -34,6 +34,31 @@ public interface Constants {
     String GAMETAG_VALUE_REVOLUTIONARY = "revolutionary";
   }
 
+  interface ThumbnailConstants {
+    String THUMBNAIL_FILENAME_1 = "thumb00023.png";
+    String THUMBNAIL_FILENAME_2 = "thu2300123.png";
+    String THUMBNAIL_FILENAME_3 = "thucc33023.png";
+  }
+
+  interface ScreenshotConstants {
+    String SCREENSHOT_FILENAME_1_01 = "scr0101.png";
+    String SCREENSHOT_FILENAME_1_02 = "scr0102.png";
+    String SCREENSHOT_FILENAME_1_03 = "scr0103.png";
+    String SCREENSHOT_FILENAME_1_04 = "scr0104.png";
+    String SCREENSHOT_FILENAME_2_01 = "scr0201.png";
+    String SCREENSHOT_FILENAME_2_02 = "scr0202.png";
+    String SCREENSHOT_FILENAME_2_03 = "scr0203.png";
+    String SCREENSHOT_FILENAME_2_04 = "scr0204.png";
+    String SCREENSHOT_FILENAME_3_01 = "scr0301.png";
+    String SCREENSHOT_FILENAME_3_02 = "scr0302.png";
+    String SCREENSHOT_FILENAME_3_03 = "scr0303.png";
+
+
+
+    String THUMBNAIL_FILENAME_2 = "thu2300123.png";
+    String THUMBNAIL_FILENAME_3 = "thucc33023.png";
+  }
+
   interface ModelConstants {
     String MODEL_VIEW_NAME_GAME_LIST = "game-list";
     String MODEL_VITE_NAME_GAME_DETAILS = "game-details";
